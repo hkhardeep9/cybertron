@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model KishMish.Web.Models.Traders.VMTraders
+<div class="jumbotron">
+    <h1>Kishmish</h1>
+    <div>
+        @{ if (ViewBag.username != null)
+            {
+                <a>@ViewBag.username</a>
+            }
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div>@Html.LabelFor(m=>m.UserName)</div>
+            <div>@Html.TextBoxFor(m=>m.UserName)</div>
+            <div>@Html.LabelFor(m => m.Password)</div>
+            <div>@Html.TextBoxFor(m => m.Password)</div>
+            <input type="submit" value="Login" />
+        }
+    </div>
+</div>
